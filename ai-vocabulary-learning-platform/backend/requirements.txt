@@ -1,0 +1,7 @@
+flask
+psycopg2-binary
+Werkzeug
+flask-cors
+PyJWT
+together
+requests

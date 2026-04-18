@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up | Vocab App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --accent: #a5b4fc;
+      --text-dark: #1e293b;
+      --bg-light: #f8fafc;
+    }
+
+    /* SPLASH SCREEN */
+    .splash {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      text-align: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+
+    .splash.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .logo {
+      font-size: clamp(4rem, 10vw, 6rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #fff, var(--accent), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .progress-container {
+      width: 220px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: white;
+      animation: progress 2.4s ease forwards;
+    }
+
+    @keyframes progress {
+      to {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div class="splash" id="splashScreen">
+    <div class="logo">VocabLearn</div>
+    <div class="tagline">Master new words faster with AI-powered practice</div>
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+
+  <!-- SIGNUP PAGE -->
+  <div class="container">
+    <div class="card">
+      <h1>Create Account</h1>
+      <p class="subtitle">Start learning vocabulary visually</p>
+
+      <form id="signupForm">
+        <div class="input-group">
+          <input type="text" id="username" required />
+          <label>Username</label>
+        </div>
+
+        <div class="input-group">
+          <input type="email" id="email" required />
+          <label>Email</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="password" required />
+          <label>Password</label>
+        </div>
+
+        <button type="submit">Sign Up</button>
+        <p id="message"></p>
+      </form>
+
+      <p class="link">
+        Already have an account?
+        <a href="signin.html">Sign in</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="js/signup.js"></script>
+
+  <!-- SPLASH CONTROL SCRIPT -->
+  <script>
+    window.addEventListener("load", () => {
+      const splash = document.getElementById("splashScreen");
+
+      setTimeout(() => {
+        splash.classList.add("hide");
+
+        setTimeout(() => {
+          splash.style.display = "none";
+        }, 600);
+
+      }, 2400);
+    });
+  </script>
+
+</body>
+
+</html>

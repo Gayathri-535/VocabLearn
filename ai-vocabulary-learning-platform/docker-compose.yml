@@ -1,0 +1,34 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: vocab-app-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+      
+  backend:
+    build: ./backend
+    container_name: vocab-app-backend
+    ports:
+      - "5001:5000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: vocab-app-db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:

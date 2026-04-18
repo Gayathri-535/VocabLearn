@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 30px 28px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 6px;
+  color: #1e293b;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 22px;
+}
+
+.section h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #334155;
+}
+
+.grid-language {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.lang-btn {
+  padding: 12px;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+.lang-btn.active {
+  background: #3b82f6;
+  border: 2px solid #2563eb;
+  color: #ffffff;
+}
+
+.lang-btn .fi {
+  font-size: 18px;
+}
+
+.grid-level {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.grid-level button {
+  padding: 10px;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.grid-level button:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+.grid-level button.active {
+  background: #3b82f6;
+  border: 2px solid #2563eb;
+  color: #ffffff;
+}
+
+#continueBtn,
+#finishBtn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#continueBtn:enabled,
+#finishBtn:enabled {
+  opacity: 1;
+}
+
+#continueBtn:hover:enabled,
+#finishBtn:hover:enabled {
+  background: #4338ca;
+}

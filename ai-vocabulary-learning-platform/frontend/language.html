@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Select Language</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="css/select.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Select Learning Language</h1>
+      <p class="subtitle">Choose the language you want to learn.</p>
+
+      <div class="grid-language" id="languageOptions">
+        <button data-value="1" class="lang-btn">
+          <span class="fi fi-gb"></span>English
+        </button>
+        <button data-value="2" class="lang-btn">
+          <span class="fi fi-in"></span>Telugu
+        </button>
+        <button data-value="3" class="lang-btn">
+          <span class="fi fi-de"></span>German
+        </button>
+
+       <!-- <button data-value="4" class="lang-btn">
+          <span class="fi fi-fr"></span>French
+        </button>
+        <button data-value="5" class="lang-btn">
+          <span class="fi fi-es"></span>Spanish
+        </button> -->
+
+      </div>
+
+      <button id="continueBtn" disabled>Continue →</button>
+    </div>
+  </div>
+  <script src="js/language.js"></script>
+</body>
+
+</html>

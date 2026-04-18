@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - VocabLearn</title>
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #f8fafc;
+            --sidebar-bg: #0f172a;
+            --text: #1e293b;
+            --text-light: #cbd5e1;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: var(--sidebar-bg);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: -260px;
+            transition: left 0.3s ease;
+            z-index: 100;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            padding: 28px 20px 16px;
+            margin: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.05rem;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #1e293b;
+            color: white;
+        }
+
+        .sidebar .logout {
+            margin-top: auto;
+            padding-bottom: 32px;
+        }
+
+        .main {
+            flex: 1;
+            transition: margin-left 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main.shift {
+            margin-left: 260px;
+        }
+
+        .topbar {
+            background: white;
+            padding: 16px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 90;
+        }
+
+        .burger {
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .hero {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin: 0 0 1rem;
+            color: var(--primary-dark);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #475569;
+            margin: 0 0 2.5rem;
+            line-height: 1.5;
+        }
+
+        .start-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 18px 48px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .start-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .start-btn {
+                padding: 16px 36px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <h2>Menu</h2>
+        <a href="dashboard.html" id="link-dashboard" class="active">Dashboard</a>
+        <a href="language.html" id="link-language">Change Language</a>
+        <a href="level.html" id="link-level">Change Level</a>
+        <a href="lessons.html" id="link-lessons">Lessons</a>
+        <a href="help.html" id="link-help">Support & Help</a>
+        <a href="#" id="logoutLink" class="logout">Logout</a>
+    </div>
+
+    <div class="main" id="mainContent">
+
+        <div class="topbar">
+            <div class="burger" id="burger">☰</div>
+            <div class="profile">
+                <div class="avatar" id="avatarInitial">?</div>
+                <span id="username">Loading...</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="hero">
+                <h1 id="greeting">Welcome back!</h1>
+                <p id="welcomeText">Start your new language journey with VocabLearn today!</p>
+                <button class="start-btn" onclick="window.location.href='lessons.html'">
+                    Start Your Lessons →
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const token = localStorage.getItem("access_token");
+            if (!token) {
+                window.location.href = "signin.html";
+                return;
+            }
+
+            // Dynamic username
+            const email = localStorage.getItem("email") || "Guest";
+            const displayName = email.split('@')[0];
+            const capitalizedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+
+            document.getElementById("username").textContent = capitalizedName;
+            document.getElementById("avatarInitial").textContent = capitalizedName.charAt(0);
+            document.getElementById("greeting").textContent = `Hey ${capitalizedName}!`;
+
+            // Sidebar toggle
+            document.getElementById("burger").addEventListener("click", () => {
+                document.getElementById("sidebar").classList.toggle("active");
+                document.getElementById("mainContent").classList.toggle("shift");
+            });
+
+            // Logout
+            document.getElementById("logoutLink").addEventListener("click", (e) => {
+                e.preventDefault();
+                localStorage.clear();
+                window.location.href = "signin.html";
+            });
+
+            // Active link highlighting
+            const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+            const linkMap = {
+                'dashboard.html': 'link-dashboard',
+                'lessons.html': 'link-lessons',
+                'help.html': 'link-help'
+            };
+            const activeId = linkMap[currentPage];
+            if (activeId) {
+                document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+                document.getElementById(activeId).classList.add('active');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
