@@ -102,43 +102,43 @@ docker-compose up --build
 ## 📸 Screenshots
 
 ### 1. Splash Screen
-![Splash](screenshots/splash.png)
+![Splash](Screenshots/splash.png)
 
 ### 2. Sign Up Page
-![Signup](screenshots/signup.png)
+![Signup](Screenshots/signup.png)
 
 ### 3. Sign In Page
-![Signin](screenshots/signin.png)
+![Signin](Screenshots/signin.png)
 
 ### 4. Language Selection
-![Language](screenshots/LanguageSelection.png)
+![Language](Screenshots/LanguageSelection.png)
 
 ### 5. Level Selection
-![Level](screenshots/LevelSelection.png)
+![Level](Screenshots/LevelSelection.png)
 
 ### 6. Dashboard
-![Dashboard](screenshots/Dashboard.png)
+![Dashboard](Screenshots/Dashboard.png)
 
 ### 7. Lessons Overview
-![Lessons](screenshots/LessonsCard.png)
+![Lessons](Screenshots/LessonsCard.png)
 
 ### 8. Lesson Page - 1
-![Lesson1](screenshots/LessonPage.png)
+![Lesson1](Screenshots/LessonPage.png)
 
 ### 9. Lesson Page - 2
-![Lesson2](screenshots/LessonPage2.png)
+![Lesson2](Screenshots/LessonPage2.png)
 
 ### 10. Lesson Page - 3
-![Lesson3](screenshots/LessonPage3.png)
+![Lesson3](Screenshots/LessonPage3.png)
 
 ### 11. Progress Page
-![Progress1](screenshots/ProgressPage.png)
+![Progress1](Screenshots/ProgressPage.png)
 
 ### 12. Progress Page (Detailed)
-![Progress2](screenshots/ProgressPage2.png)
+![Progress2](Screenshots/ProgressPage2.png)
 
 ### 13. Help & Support
-![Help](screenshots/HelpSupportPage.png)
+![Help](Screenshots/HelpSupportPage.png)
 
 ---
 
