@@ -4,7 +4,7 @@ import os
 from functools import wraps
 from flask import request, jsonify
 
-SECRET_KEY = os.getenv("JWT_SECRET", "dev-secret")
+SECRET_KEY = os.getenv("JWT_SECRET")
 
 def generate_token(user_id):
     payload = {
